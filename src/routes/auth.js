@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const Profile = require('../models/Profile');
 const bycrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {registerValidation, loginValidation} = require('../validation');
@@ -27,9 +28,14 @@ router.post('/register', async (req, res) => {
         email: req.body.email,
         password: hashPassword,
     })
+    const profile = new Profile({
+        username : req.body.username,
+    })
     try{
         const savedUser = await user.save();
+        const savedProfile = await profile.save();
         res.send(savedUser);
+        //console.log()
     }catch(err){
         res.status(400).send(err);
     }
@@ -62,11 +68,12 @@ router.post('/login',async (req, res) => {
     if(!validPassword) return res.status(400).json({'error' : 'Password not found'});
 
     //Create and assign a token
-    const token = jwt.sign({username : user.username}, process.env.TOKEN_SECRET);
+    const token = jwt.sign({user_id : user._id}, process.env.TOKEN_SECRET);
     res.header('auth-token', token).json({"auth-token" : token});
     console.log("Logged in");
 
 })
+
 
 
 

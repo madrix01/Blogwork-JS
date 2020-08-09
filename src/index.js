@@ -8,6 +8,7 @@ dotenv.config();
 //routes
 const postRoute = require('./routes/posts');
 const authRoute = require('./routes/auth');
+const profileRoute = require('./routes/profile')
 
 //DB connect 
 mongoose.connect(process.env.DB_CONNECT,
@@ -26,6 +27,7 @@ app.use(express.json());
 //Routes
 app.use('/api/user' , authRoute);
 app.use('/api/posts', postRoute);
+app.use('/api/user', profileRoute);
 
 app.listen(6969, () => console.log("Ayy Ayy captain"));
 

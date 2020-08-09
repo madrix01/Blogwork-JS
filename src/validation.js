@@ -22,7 +22,16 @@ const loginValidation = (data) => {
     return loginValidSchema.validate(data);
 }
 
+const postValidation = (data) => {
+    const postValidationSchema = Joi.object({
+        title : Joi.string().min(10).max(50).required(),
+        description : Joi.string().min(20).max(300),
+        tags : Joi.string().max(100)
+    })
+    return postValidationSchema.validate(data);
+}
+
 module.exports.loginValidation = loginValidation;
 module.exports.registerValidation = registerValidation;
-
+module.exports.postValidation = postValidation;
 
