@@ -9,6 +9,9 @@ const profileSchema = new mongoose.Schema({
         blogNo:{
             type: Number,
             default: 0
+        },
+        lastBlogTime :{
+            type : Date,
         }
     }
 })

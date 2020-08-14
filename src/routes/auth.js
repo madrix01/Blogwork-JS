@@ -68,7 +68,10 @@ router.post('/login',async (req, res) => {
     if(!validPassword) return res.status(400).json({'error' : 'Password not found'});
 
     //Create and assign a token
-    const token = jwt.sign({user_id : user._id}, process.env.TOKEN_SECRET);
+    const token = jwt.sign({
+        user_id : user._id,
+        username : user.username
+    }, process.env.TOKEN_SECRET);
     res.header('auth-token', token).json({"auth-token" : token});
     console.log("Logged in");
 

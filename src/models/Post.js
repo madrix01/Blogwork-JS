@@ -21,9 +21,8 @@ const postSchema = mongoose.Schema({
         type : Date,
         default : Date.now,
     },
-    user : {
-        type : String,
-        require : true,
+    username : {
+        type : String
     }
 })
 

@@ -24,8 +24,8 @@ const loginValidation = (data) => {
 
 const postValidation = (data) => {
     const postValidationSchema = Joi.object({
-        title : Joi.string().min(10).max(50).required(),
-        description : Joi.string().min(20).max(300),
+        title : Joi.string().min(0).max(50).required(),
+        description : Joi.string().min(0).max(300),
         tags : Joi.string().max(100)
     })
     return postValidationSchema.validate(data);
