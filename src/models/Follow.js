@@ -3,10 +3,10 @@ const User = require('./User');
 
 const followSchema = new mongoose.Schema({
     follower : {
-        type : User,
+        type : String,
     },
     followee : {
-        type : User,
+        type : String,
     }
 })
 

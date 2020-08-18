@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
-const User = require('./User');
 
 const profileSchema = new mongoose.Schema({
     username : {
+        type: String,
+    },
+    userId: {
         type: String,
     },
     status : {
@@ -12,6 +14,12 @@ const profileSchema = new mongoose.Schema({
         },
         lastBlogTime :{
             type : Date,
+        },
+        follower : {
+            type : String,
+        },
+        following : {
+            type : String,
         }
     }
 })

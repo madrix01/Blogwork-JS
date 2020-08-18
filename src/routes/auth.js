@@ -28,11 +28,12 @@ router.post('/register', async (req, res) => {
         email: req.body.email,
         password: hashPassword,
     })
-    const profile = new Profile({
-        username : req.body.username,
-    })
     try{
         const savedUser = await user.save();
+        const profile = new Profile({
+            username : req.body.username,
+            userId: savedUser._id           
+        })
         const savedProfile = await profile.save();
         res.send(savedUser);
         //console.log()

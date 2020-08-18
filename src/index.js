@@ -8,7 +8,8 @@ dotenv.config();
 //routes
 const postRoute = require('./routes/posts');
 const authRoute = require('./routes/auth');
-const profileRoute = require('./routes/profile')
+const profileRoute = require('./routes/profile');
+const followRoute = require('./routes/following');
 
 //DB connect 
 mongoose.connect(process.env.DB_CONNECT,
@@ -28,8 +29,9 @@ app.use(express.json());
 app.use('/api/user' , authRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/user', profileRoute);
+app.use('/api', followRoute);
 
-app.listen(6969, () => console.log("Ayy Ayy captain"));
+app.listen(6969,"192.168.29.143" ,() => console.log("Ayy Ayy captain"));
 
 
 //mongodb+srv://madrix:<password>@cluster0.kdbs1.mongodb.net/<dbname>?retryWrites=true&w=majority
