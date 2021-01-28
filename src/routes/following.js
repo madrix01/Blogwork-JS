@@ -14,7 +14,6 @@ router.post('/:username/follow', verify, async(req, res) => {
         "followee" : req.user.username,
     })
     try{
-        
         const saveRelation = await follow.save();
         res.json(saveRelation);
     }catch(err){
