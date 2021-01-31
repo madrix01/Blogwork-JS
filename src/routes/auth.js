@@ -73,7 +73,7 @@ router.post('/login',async (req, res) => {
         user_id : user._id,
         username : user.username
     }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).json({"auth-token" : token});
+    res.header('authToken', token).json({"authToken" : token});
     console.log("Logged in");
 
 })
